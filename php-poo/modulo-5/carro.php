@@ -3,16 +3,17 @@
 class Car
 {
   // Atributos e Métodos
-  public string $color;
-  public int $year;
-  public string $model;
+  // Jeito Antigo
+  // public string $color;
+  // public int $year;
+  // public string $model;
 
-  public function __construct(string $color, int $year, string $model)
+  public function __construct(public string $color, public int $year, public string $model, public int $velocidade)
   {
 
-    $this->color = $color;
-    $this->year = $year;
-    $this->model = $model;
+    // $this->color = $color;
+    // $this->year = $year;
+    // $this->model = $model;
     echo 'Construindo Carro......' . $this->model. '...<br>';
   }
 
@@ -30,9 +31,9 @@ class Car
 // $year = 2010;
 // $model = 'AB';
 
-$car1 = new Car('Yellow', 2010, 'Gol');
-$car2 = new Car('Pink', 2002, "Passat");
-var_dump($car2);
+$car1 = new Car('Yellow', 2010, 'Gol', 80);
+$car2 = new Car('Pink', 2002, "Passat", 90);
+var_dump($car1);
 
 // $car1->color = 'azul';
 // $car1->year = 2012;
