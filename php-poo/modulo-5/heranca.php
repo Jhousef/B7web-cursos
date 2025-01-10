@@ -18,14 +18,10 @@ class Veiculo {
 }
 
 class Carro extends Veiculo{
-  public function __construct(public int $portas)
+ 
+  public function abrirPortas($portas)
   {
-
-  }
-
-  public function abrirPortas()
-  {
-    echo 'Abrindo as ' . $this->portas . ' portas. <br>';
+    echo 'Abrindo as ' . $portas . ' portas. <br>';
   }
 }
 
@@ -44,15 +40,15 @@ class moto extends Veiculo{
 }
 
 echo 'carro <br>';
-$carro = new Carro(3);
-$carro->abrirPortas();
+$carro = new Carro('Hyundai', 'modelo hyundai');
+$carro->abrirPortas(4);
 $carro->parar();
 
 
 echo 'moto <hr>';
 
-$moto = new Moto('honda', '160');
 echo 'moto <br>';
+$moto = new Moto('honda', '160');
 $moto->mover();
 $moto->parar();
 $moto->empinar();
