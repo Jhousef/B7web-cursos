@@ -35,7 +35,20 @@ class Cachorro extends Mamifero
   }
 }
 
-class Aves extends Animal
+class Gato extends Mamifero
+{
+  public function abanarORabo()
+  {
+    echo 'abanando o rabo... <br>';
+  }
+
+  public function miar()
+  {
+    echo 'miando...';
+  }
+}
+
+class Ave extends Animal
 {
   public function colocarOvos()
   {
@@ -48,7 +61,7 @@ class Aves extends Animal
   }
 }
 
-class Pombinho extends Aves
+class Pombinho extends Ave
 {
   public function comerPaozinho()
   {
@@ -61,6 +74,14 @@ $cachorro->latir();
 $cachorro->mover();
 $cachorro->respirar();
 $cachorro->amamentar();
+
+echo '<br> <hr>  <br>';
+
+$gato = new Gato();
+$gato->miar();
+$gato->mover();
+$gato->respirar();
+$gato->amamentar();
 
 echo '<br> <hr>  <br>';
 
