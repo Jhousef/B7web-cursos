@@ -1,11 +1,8 @@
 <?php
 
-class Animal
+abstract class Animal
 {
-  public function emitirSom()
-  {
-    return null;
-  }
+  abstract public function emitirSom();
 }
 
 class Cachorro extends Animal
@@ -29,6 +26,11 @@ class Gato extends Animal
 class Peixe extends Animal
 {
   public $nome = 'Peixe';
+
+  public function emitirSom()
+  {
+    return null;
+  }
 
 }
 
