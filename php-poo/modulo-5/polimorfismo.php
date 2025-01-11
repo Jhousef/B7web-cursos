@@ -7,10 +7,35 @@ abstract class Animal
 
 class Cachorro extends Animal
 {
-  public $nome = 'Cachorro';
+  // public $nome = 'Cachorro';
+
+  public function __construct(public string $nome)
+  {}
+
   public function emitirSom()
   {
     return 'au au';
+  }
+}
+
+class FilaBrasileiro extends Cachorro
+{
+  // public $nome = 'Fila Brazileiro';
+  public $meses = 7;
+  
+  public function __construct($nome)
+  {
+    parent::__construct($nome);
+  }
+
+  public function emitirSom()
+  {
+    if($this->meses > 6) {
+      return 'Ruf Ruf';
+    } else {
+      return parent::emitirSom();
+    }
+    
   }
 }
 
@@ -39,24 +64,15 @@ function fazerOAnimalEmitirSom($animal)
   echo 'O animal '.$animal->nome . ' faz: ' . $animal->emitirSom() . '<br>';
 }
 
-$cachorro = new Cachorro();
-$gato = new Gato();
-$peixe = new Peixe();
-
-$animais = array($cachorro, $gato, $peixe);
-
-foreach($animais as $animal) {
-  fazerOAnimalEmitirSom($animal);
-}
-
-// echo 'CACHORRO <br>';
 // $cachorro = new Cachorro();
-// echo $cachorro->emitirSom();
-
-// echo 'GATO <br>';
 // $gato = new Gato();
-// echo $gato->emitirSom();
-
-// echo 'PEIXE <br>';
 // $peixe = new Peixe();
-// var_dump($peixe->emitirSom());
+
+// $animais = array($cachorro, $gato, $peixe);
+
+// foreach($animais as $animal) {
+//   fazerOAnimalEmitirSom($animal);
+// }
+
+$fila = new FilaBrasileiro('Rufos');
+fazerOAnimalEmitirSom($fila);
