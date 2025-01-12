@@ -44,7 +44,7 @@ class Gato extends Mamifero
 
   public function miar()
   {
-    echo 'miando...';
+    echo 'miando... <br>';
   }
 }
 
