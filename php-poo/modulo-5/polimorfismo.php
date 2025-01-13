@@ -1,8 +1,17 @@
 <?php
 
+use Animal as GlobalAnimal;
+
 abstract class Animal
 {
+  public $idade = 30;
   abstract public function emitirSom();
+
+  // CLASSES ABSTRATAS TAMBÉM PODEM TER MÉTODOS CONCRETOS(SEM PRECISAR SER SÓ METODOS ABSTRATOS NA CLASSE ABSTRATA)
+  public function mover()
+  {
+    echo 'Movendo... <br>';
+  }
 }
 
 class Cachorro extends Animal
@@ -26,6 +35,11 @@ class FilaBrasileiro extends Cachorro
   public function __construct($nome)
   {
     parent::__construct($nome);
+  }
+
+  public function getIdade()
+  {
+    return $this->idade;
   }
 
   public function emitirSom()
@@ -75,4 +89,6 @@ function fazerOAnimalEmitirSom($animal)
 // }
 
 $fila = new FilaBrasileiro('Rufos');
+echo $fila->getIdade() . '<br>';
+$fila->mover();
 fazerOAnimalEmitirSom($fila);

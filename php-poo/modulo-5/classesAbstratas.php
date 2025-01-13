@@ -6,7 +6,6 @@ abstract class CalculadoraDeAreas
   // {}
 
   abstract public function realizarCalculo();
-
 }
 
 class Quadrado extends CalculadoraDeAreas
