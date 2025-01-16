@@ -1,5 +1,10 @@
 <?php
 
+function meu_autoloader($className) {
+  include_once('classes/' .  strToLower($className) . '.class.php');
+}
+
+spl_autoload_register('meu_autoloader');
 trait Logger 
 {
   public function log($message) {
@@ -8,34 +13,9 @@ trait Logger
   }
 }
 
-class User
-{
-  use Logger;
-  public function createUser() {
-    echo 'User created';
-    $this->log('User created');
-  }
-
-  public function loginUser() {
-    echo 'User logged in';
-    $this->log('User logged in');
-  }
-}
-
-class File
-{
-  use Logger;
-
-  public function created() {
-    echo 'File created';
-    $this->log('File created');
-  }
-
-  public function deleted() {
-    echo 'file deleted';
-    $this->log('File deleted');
-  }
-}
+$teste = new Teste();
+$teste->teste();
+echo '<br>';
 
 $user = new User();
 $user->createUser();
