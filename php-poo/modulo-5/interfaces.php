@@ -1,11 +1,17 @@
 <?php
 
+include('functions.php');
 interface MetodoPagamento {
+  public function getName():string;
   public function pagar(float $valor):bool;
 }
 
 class Paypal implements MetodoPagamento
 {
+  public function getName():string
+  {
+    return 'Paypal';
+  }
   public function pagar(float $valor):bool
   {
     echo 'Pagamento via Paypal no valor de R$ ' .$valor . '<br>';
@@ -15,6 +21,10 @@ class Paypal implements MetodoPagamento
 
 class CreditCard implements MetodoPagamento
 {
+  public function getName():string
+  {
+    return 'Cartão de credito';
+  }
   public function pagar(float $valor):bool
   {
     echo 'Pagamento via cartão de credito no valor de R$ ' .$valor . '<br>';
@@ -24,6 +34,10 @@ class CreditCard implements MetodoPagamento
 
 class Pix implements MetodoPagamento
 {
+  public function getName():string
+  {
+    return 'Pix';
+  }
   private function gerarQrCode(float $valor): string
   {
     echo 'Gerando QR Code para pagamento via Pix no valor de R$ ' .$valor . '<br>';
@@ -38,14 +52,10 @@ class Pix implements MetodoPagamento
   }
 }
 
-// Nosso sistema -> imutavel
-$pagamento = new Pix();
-if ($pagamento->pagar(100) === true) {
-  echo 'Aprovado...';
-} else {
-  echo 'Rejeitado...';
-}
+$metodoPagamentoSelecionadoPeloUsuario = new CreditCard();
 
+//imutavel
+processarPagamento($metodoPagamentoSelecionadoPeloUsuario, 100);
 
 // Nosso sistema usando Interface
 
