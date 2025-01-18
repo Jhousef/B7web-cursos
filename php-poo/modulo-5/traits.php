@@ -1,21 +1,21 @@
 <?php
 
 function meu_autoloader($className) {
-  include_once('classes/' .  strToLower($className) . '.class.php');
-}
+  $diretorios = ['classes/', 'traits/'];
 
-spl_autoload_register('meu_autoloader');
-trait Logger 
-{
-  public function log($message) {
-    echo '<br>[log]: ' . $message . '<br>';
-    echo 'Datetime: ' . date('Y-m') . '<br>';
+  foreach ($diretorios as $diretorio){
+    if(file_exists($diretorio . strTolower($className) . '.class.php')){
+      include_once($diretorio . strTolower($className) . '.class.php');
+      break;
+    }
   }
 }
 
-$teste = new Teste();
-$teste->teste();
-echo '<br>';
+spl_autoload_register('meu_autoloader');
+
+// $teste = new Teste();
+// $teste->teste();
+// echo '<br>';
 
 $user = new User();
 $user->createUser();
@@ -25,4 +25,4 @@ echo '<br>';
 
 $file = new File();
 $file->created();
-$file->deleted(); 
+$file->deleted();
