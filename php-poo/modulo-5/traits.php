@@ -1,5 +1,5 @@
 <?php
-
+//Traits
 function meu_autoloader($className) {
   $diretorios = ['classes/', 'traits/'];
 
